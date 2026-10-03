@@ -5,9 +5,11 @@ By **Seunghan** ([@seunghan91](https://github.com/seunghan91))
 Omarchy's **White** theme sets the icon theme to `Yaru-grey` and **Vantablack**
 sets `Yaru-gray`, but `yaru-icon-theme` ships no grey variant (only blue,
 magenta, olive, prussiangreen, purple, red, sage, wartybrown, yellow and the
-default orange). The name does not resolve, so GTK falls through to Adwaita's
-flat outline icons — and, per [omacom/omarchy#7203](https://github.com/omacom/omarchy/issues/7203),
-missing-icon placeholders and GTK4 crashes.
+default orange). The name does not resolve, so GTK falls back to its built-in
+outline icons (not Adwaita: setting `Adwaita` explicitly gives blue folders),
+with some icons left as broken-image placeholders — and, per
+[omacom/omarchy#7203](https://github.com/omacom/omarchy/issues/7203), GTK4 crashes.
+Setting `hicolor` reproduces today's look exactly, placeholders included.
 
 The intent for these two themes is monochrome ([#4872](https://github.com/omacom/omarchy/pull/4872)),
 so swapping in a coloured Yaru variant ([#13497](https://github.com/omacom/omarchy/pull/13497))
@@ -23,7 +25,9 @@ Only the accent folder of each variant is rebuilt (about 260 files); everything
 else is inherited from stock `Yaru`, the same way the coloured variants work.
 It takes about a second.
 
-![Comparison: Adwaita fallback, orange Yaru, Yaru-grey, Yaru-gray](docs/comparison.png)
+![Comparison: built-in fallback, orange Yaru, Yaru-grey, Yaru-gray](docs/comparison.png)
+
+![Which name gives which look: missing name, hicolor, Adwaita, Yaru-grey](docs/fallback-names.png)
 
 ## Use
 
